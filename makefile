@@ -44,10 +44,17 @@ $(PROJ_NAME): $(OBJ)
 	@ echo ' '
 
 objFolder:
-	@ mkdir -p obj
+	@ mkdir obj
 
 clean:
-	@ $(RM) ./obj/*.o $(PROJ_NAME) *~
-	@ rmdir obj
+	@ rd /s /q obj
+	@del pcv.exe *.txt
+	@cls
 
 .PCVS: all clean
+
+go: 
+	@make clean
+	@make all
+	@cls 
+	@pcv.exe

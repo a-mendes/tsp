@@ -15,7 +15,7 @@ float GRASP(int n, std::vector<int> &s, float **d, float alpha, int GRASP_max /*
 {
     vector<int> s_star;
     int iter = 0;
-    float fo_star = INT_MAX;
+    float fo_star = 1000;
     float fo;
 
 

@@ -21,26 +21,52 @@ void constroi_solucao(int n, vector<int>& s, float **distancia)
    implementa o Metodo construtivo do vizinho mais proximo */
 void constroi_solucao_gulosa_vizinho_mais_proximo(int n, vector<int> &s, float **d)
 {
-  vector<int> nao_visitada; //lista das cidades ainda nao visitadas
+    vector<int> nao_visitada; //lista das cidades ainda nao visitadas
 
-  // inserir um elemento no final de uma lista
-  for(int i = 1; i < n; i++)
-    nao_visitada.push_back(i);
+    // inserir um elemento no final de uma lista
+    for(int i = 1; i < n; i++)
+        nao_visitada.push_back(i);
 
-  s.clear(); // limpa solucao
-  s.push_back(0); // A cidade de origem é a cidade 0
+    s.clear(); // limpa solucao
+    s.push_back(0); // A cidade de origem é a cidade 0
 
-  int mais_proxima; // armazena a cidade mais proxima para inserir na solucao
-  float dist; // armazena a menor distancia
+    int mais_proxima; // armazena a cidade mais proxima para inserir na solucao
+    float dist; // armazena a menor distancia
 
-/*
+    /*
 	Implementar o loop do metodo construtivo, 
 	inserindo sempre a cidade mais proxima ainda
 	nao visitada na solucao.
-*/
-	
-}
+    */
 
+    //resultado esperado: 565.6
+
+    while(nao_visitada.size() != 0) 
+    {
+        printf("\n");
+        //Pega a ultima cidade da solucao
+        int cidade_atual = s.back();
+
+        //supõe que a cidade mais próxima seja a primeira da lista de nao_visitadas
+        mais_proxima = 0;
+        dist = d[cidade_atual][nao_visitada[mais_proxima]];
+
+        //Percorre a lista buscando a cidade mais próxima dentre as não visitadas
+        for (int i = 1; i < nao_visitada.size(); i++)
+        {
+            if(d[cidade_atual][nao_visitada[i]] < dist) 
+            {
+                dist = d[cidade_atual][nao_visitada[i]];
+                mais_proxima = i;
+            }
+        }
+
+        //Adiciona a cidade mais proxima à lista de soluções
+        s.push_back(nao_visitada[mais_proxima]);
+        //Remove a cidade mais proxima da lista de não visitadas
+        nao_visitada.erase(nao_visitada.begin() + mais_proxima);
+    }
+}
 
 
 /* Constroi uma solucao de forma aleatoria */
@@ -54,8 +80,8 @@ void constroi_solucao_aleatoria(int n, vector<int> &s, float **d)
     default_random_engine rand_seed(seed);
     shuffle ( s.begin(), s.end(), rand_seed );
 
-    //Para c++ 98
-    //random_shuffle ( s.begin(), s.end() );
+    // //Para c++ 98
+    // //random_shuffle ( s.begin(), s.end() );
 
 }
 
