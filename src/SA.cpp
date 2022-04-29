@@ -30,7 +30,7 @@ float SA(int n, std::vector<int> &s, float **d, float alpha,
     s_star = s;
     fo = fo_star = fo_viz = calcula_fo(n, s, d);
 
-/* implementar o loop do SA */
+    /* implementar o loop do SA */
   
     s = s_star;
 

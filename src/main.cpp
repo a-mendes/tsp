@@ -24,6 +24,7 @@ Atualizado por Puca Huachi em ago/2019
 #include "Menus.h"
 #include "Descida.h"
 #include "MS.h"
+#include "GRASP.h"
 
 //---------------------------------------------------------------------------
 using namespace std;
@@ -137,7 +138,7 @@ int main(int argc, char* argv[])
 
     case 5: /* Multi-Start */
             inicio_CPU = clock();
-            fo = MS(n, s, d, s.size());
+            fo = MS(n, s, d, 700);
             fim_CPU = clock();
             printf("\nSolucao obtida usando a estrategia Multi-Start:\n");
             
@@ -160,8 +161,16 @@ int main(int argc, char* argv[])
            break;
 
     case 9: /* GRASP */
-           printf("Nao implementado\n");
-           break;
+            inicio_CPU = clock();
+            fo = GRASP(n, s, d, 0.3, 700);
+            fim_CPU = clock();
+            printf("\nSolucao obtida usando a estrategia GRASP:\n");
+
+            imprime_rota(s,n);
+
+            printf("Funcao objetivo = %f\n",fo);
+            printf("Tempo de CPU = %f segundos:\n",(double)(fim_CPU - inicio_CPU)/CLOCKS_PER_SEC);
+            break;
 
     case 10: /* VND */
            printf("Nao implementado\n");

@@ -34,10 +34,10 @@ float MS(int n, std::vector<int> &s, float **d, int iter_max)
     {
         iter++;
         constroi_solucao_aleatoria(n, s, d);
-        descida_best_improvement(n, s, d);
+        fo = descida_best_improvement(n, s, d);
 
-        fo = calcula_fo(n, s, d);
-        
+        printf("\ni: %d\tfo: %.5lf", iter, fo);
+
         if(fo < fo_star){
             fo_star = fo;
             s_star = s;

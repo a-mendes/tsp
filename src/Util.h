@@ -74,7 +74,7 @@ void atualiza_arestas(int **arestas, int n, int m, int prox_cid);
 struct ordena_dist_crescente {
     float **d;      //matriz de distancia
     int index;      //ultima cidade da solucao
-    bool operator() (int i,int j) {
+    bool operator() (int i, int j) {
         return ( d[index][i] < d[index][j]);
     }
 } ;
