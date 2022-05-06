@@ -19,7 +19,6 @@ float GRASP(int n, std::vector<int> &s, float **d, float alpha, int GRASP_max /*
 
     for (int i = 0; i < GRASP_max; ++i)
     {
-        printf("\ni: %d\tfo: %.5lf", i, fo);
         //Construcao
         constroi_solucao_parcialmente_gulosa_vizinho_mais_proximo(n, s, d, alpha);
 
